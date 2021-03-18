@@ -5,12 +5,37 @@ import Home from './Home';
 import Checkout from './Checkout';
 import Footer from './Footer';
 import Navlinks from './Navlinks';
-
-
-
+import { auth } from './firebase';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useStateValue } from './StateProvider';
+import { useEffect } from 'react';
+
 
 function App() {
+
+  const [{ loggedinuser }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        dispatch({
+          type: 'SET_LOGIN',
+          user: userAuth
+        })
+      } else {
+        dispatch({
+          type: 'SET_LOGIN',
+          user: null
+        })
+      }
+    })
+    return () => {
+      unsubscribe();
+    }
+  }, [])
+
+  console.log('user',loggedinuser);
+
   return (
     <Router>
       <div className="App">
