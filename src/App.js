@@ -3,6 +3,9 @@ import Header from './Header';
 import Login from './Login';
 import Home from './Home';
 import Checkout from './Checkout';
+import Footer from './Footer';
+import Navlinks from './Navlinks';
+
 
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -14,14 +17,16 @@ function App() {
         <Switch>
           <Route path="/checkout">
             <Header />
-            <Checkout/>
+            <Checkout />
           </Route>
           <Route path="/login">
             <Login />
           </Route>
           <Route path="/">
-            <Header/>
-            <Home/>
+            <Header />
+            <Navlinks />
+            <Home />
+            <Footer />
           </Route>
         </Switch>
 
