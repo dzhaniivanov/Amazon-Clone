@@ -9,7 +9,9 @@ function Header() {
     const [{basket},dispatch]=useStateValue();
     return (
         <nav className="header">
+            <Link to="/">
             <img className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo" />
+            </Link>
             <div className="header__search">
                 <input type="text" className="header__searchInput" />
                 <SearchIcon className="header__searchIcon" />

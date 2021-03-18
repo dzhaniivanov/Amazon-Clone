@@ -3,7 +3,6 @@ import './Checkout.css'
 import Subtotal from './Subtotal';
 import { useStateValue } from './StateProvider';
 import ProductCart from './ProductCart';
-import { IsoOutlined } from '@material-ui/icons';
 
 function Checkout() {
     const [{ basket }] = useStateValue();
