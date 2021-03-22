@@ -25,6 +25,9 @@ const reducer = (state, action) => {
                 console.log('there were err while removing');
             }
             return { ...state, basket: newCart }
+
+        default:
+            return state;
     }
 }
 
