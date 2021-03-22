@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './Payment.css';
 import { useStateValue } from './StateProvider';
 import ProductCart from './ProductCart';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { getCartTotal } from './reducer';
 import CurrencyFormat from 'react-currency-format';
+import axios from './axios';
 
 
 function Payment() {
     const [{ basket, loggedinuser }, dispatch] = useStateValue();
+    const history = useHistory();
 
 
     const stripe = useStripe();
@@ -22,22 +24,34 @@ function Payment() {
     const [disabled, setDisabled] = useState(true);
     const [clientSecret, setClientSecret] = useState(true);
 
-    useEffect(()=>{
-    /* special stripe,to charge the customer */
-    const getClientSecret=async ()=>{
-        const response=await axios({
-            method:'post',
-            url:`/payments/create?total=${getCartTotal(basket) * 100}`
-        })
-    }
-    getClientSecret();
-    },[basket])
+    useEffect(() => {
+        /* special stripe,to charge the customer */
+        const getClientSecret = async () => {
+            const response = await axios({
+                method: 'post',
+                url: `/payments/create?total=${getCartTotal(basket) * 100}`
+            })
+            setClientSecret(response.data.clientSecret)
+        }
+        getClientSecret();
+    }, [basket])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setProcessing(true);
 
-        //const payload=await stripe
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: elements.getElement(CardElement)
+            }
+        }).then(({ paymentIntent }) => {
+            //payment intent=payment confirm
+            setSucceeded(true);
+            setError(null);
+            setProcessing(false);
+
+            history.replace('/orders')
+        })
     }
 
     const handleChange = event => {
