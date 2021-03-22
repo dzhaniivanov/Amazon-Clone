@@ -3,6 +3,8 @@ export const initialState = {
     loggedinuser: null,
 
 }
+export const getCartTotal = (basket) =>
+    basket?.reduce((amount, item) => item.price + amount, 0);
 
 const reducer = (state, action) => {
     switch (action.type) {

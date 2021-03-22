@@ -10,7 +10,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import Payment from './Payment';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 
+const promise = loadStripe('pk_test_51IXlvoIssDitHYfkTEhrCtcD79TjVGbiakvJEieVKotu48nPrXGSABsVIvjiPZfgyvAhXYWLUjPiY2Ed7tg1Bhuf00g7Ok18hN');
 
 function App() {
 
@@ -49,7 +52,9 @@ function App() {
           </Route>
           <Route path="/payment">
             <Header />
-            <Payment />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
           </Route>
           <Route path="/">
             <Header />
