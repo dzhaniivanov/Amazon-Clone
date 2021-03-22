@@ -22,7 +22,7 @@ const reducer = (state, action) => {
             if (index >= 0) {
                 newCart.splice(index, 1);
             } else {
-                console.log('there were err while removing');
+                console.warn(`Can't remove product (id: ${action.id}) as its not in the basket!`);
             }
             return { ...state, basket: newCart }
 
