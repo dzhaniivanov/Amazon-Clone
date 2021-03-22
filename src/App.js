@@ -9,6 +9,7 @@ import { auth } from './firebase';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
+import Payment from './Payment';
 
 
 function App() {
@@ -46,6 +47,10 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/payment">
+            <Header />
+            <Payment />
+          </Route>
           <Route path="/">
             <Header />
             <Navlinks />
@@ -53,7 +58,6 @@ function App() {
             <Footer />
           </Route>
         </Switch>
-
       </div>
     </Router>
   );
