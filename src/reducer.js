@@ -27,7 +27,11 @@ const reducer = (state, action) => {
                 console.warn(`Can't remove product (id: ${action.id}) as its not in the basket!`);
             }
             return { ...state, basket: newCart }
-
+        case 'EMPTY_BASKET':
+            return {
+                ...state,
+                basket: [],
+            }
         default:
             return state;
     }
