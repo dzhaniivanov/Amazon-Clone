@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer.css'
+import './Footer.css';
 
 
 function Footer() {
@@ -10,16 +10,16 @@ function Footer() {
             </div>
             <div className="footerarea__links">
                 <div className="footerarea__linkarea">
-                    <span>test</span>
+                    <span>About Amazon</span>
                 </div>
                 <div className="footerarea__linkarea">
-                    <span>test2</span>
+                    <span>Make money with Us</span>
                 </div>
                 <div className="footerarea__linkarea">
-                    <span>test3</span>
+                    <span>Amazon Payment Products</span>
                 </div>
                 <div className="footerarea__linkarea">
-                    <span>test4</span>
+                    <span>Let us Help You</span>
                 </div>
             </div>
         </div>
