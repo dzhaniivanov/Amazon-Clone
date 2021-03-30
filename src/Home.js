@@ -1,75 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Product from './Product';
 import './Home.css';
+import { db } from './firebase';
+
 
 function Home() {
+    const [products, setProducts] = useState([]);
+
+    const getProducts = () => {
+        db.collection('products').onSnapshot((snapshot) => {
+            let tempProducts = [];
+
+            tempProducts = snapshot.docs.map((doc) => (
+                {
+                    id: doc.id,
+                    product: doc.data(),
+
+                }
+            ));
+            setProducts(tempProducts);
+        })
+    }
+
+    useEffect(() => {
+        console.log('call products');
+        getProducts();
+    }, [])
+
     return (
         <div className="home">
-         {/*    <img
-                className="home__image"
-                src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
-                alt=""
-            /> */}
-            <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_Computers_1x._CB432469755_.jpg" alt="home wallpaper" className="home__image"/>
+            <img src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_Computers_1x._CB432469755_.jpg" alt="home wallpaper" className="home__image" />
             <div className="home__row">
-                <Product
-                    id="1"
-                    title="Shrek 4-Movie Collection"
-                    price={12.22}
-                    rating={4}
-                    image="https://images-na.ssl-images-amazon.com/images/I/51hLiUECCjL._AC_SR400,600_.jpg"
-                />
-                <Product
-                    id="1"
-                    title="Kung Fu Panda: 3-Movie Collection [Blu-ray]"
-                    price={15.33}
-                    rating={5}
-                    image="https://images-na.ssl-images-amazon.com/images/I/51ADAKd82rL._AC_SR400,600_.jpg"
-                />
-                <Product
-                    id="1"
-                    title="Philips Sonicare"
-                    price={132.76}
-                    rating={3}
-                    image="https://images-na.ssl-images-amazon.com/images/I/81U-eoBkhnL._SL1500_.jpg"
-                />
-                <Product
-                    id="1"
-                    title="Shrek 4-Movie Collection"
-                    price={12.22}
-                    rating={4}
-                    image="https://images-na.ssl-images-amazon.com/images/I/51hLiUECCjL._AC_SR400,600_.jpg"
-                />
-                <Product
-                    id="1"
-                    title="Kung Fu Panda: 3-Movie Collection [Blu-ray]"
-                    price={15.33}
-                    rating={5}
-                    image="https://images-na.ssl-images-amazon.com/images/I/51ADAKd82rL._AC_SR400,600_.jpg"
-                />
-                <div className="home__row">
-                    <Product
-                        id="1"
-                        title="Philips Sonicare"
-                        price={132.76}
-                        rating={3}
-                        image="https://images-na.ssl-images-amazon.com/images/I/81U-eoBkhnL._SL1500_.jpg"
-                    />
-                    <Product
-                        id="1"
-                        title="Shrek 4-Movie Collection"
-                        price={12.22}
-                        rating={4}
-                        image="https://images-na.ssl-images-amazon.com/images/I/51hLiUECCjL._AC_SR400,600_.jpg"
-                    />
-                    <Product
-                        id="1"
-                        title="Kung Fu Panda: 3-Movie Collection [Blu-ray]"
-                        price={15.33}
-                        rating={5}
-                        image="https://images-na.ssl-images-amazon.com/images/I/51ADAKd82rL._AC_SR400,600_.jpg"
-                    />
-                </div>
+                {
+                    products.map((data) => (
+                        <Product
+                            key={data.id}
+                            title={data.product.title}
+                            price={data.product.price}
+                            rating={data.product.rating}
+                            image={data.product.image}
+                        />
+                    ))
+                }
             </div>
         </div>
     )
