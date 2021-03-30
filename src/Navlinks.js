@@ -7,7 +7,7 @@ function Navlinks() {
         <div className="navlinks">
             <div className="navlinks__outer">
                 <div className="navlinks__inner">
-                    <Link>Today's Deals</Link>
+                    <Link to="/deals">Today's Deals</Link>
                     <Link>Customer's Services</Link>
                     <Link>Gift Cards</Link>
                     <Link>Registry</Link>

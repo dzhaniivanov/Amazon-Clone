@@ -5,6 +5,8 @@ import Home from './Home';
 import Checkout from './Checkout';
 import Footer from './Footer';
 import Navlinks from './Navlinks';
+import About from './About';
+import TodayDeals from './TodayDeals';
 import { auth } from './firebase';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
@@ -48,7 +50,7 @@ function App() {
             <Checkout />
           </Route>
           <Route path="/orders">
-          <Header />
+            <Header />
             <Orders />
             <Footer />
           </Route>
@@ -61,10 +63,21 @@ function App() {
               <Payment />
             </Elements>
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <Header />
             <Navlinks />
             <Home />
+            <Footer />
+          </Route>
+          <Route path="/about">
+            <Header />
+            <About />
+            <Footer />
+          </Route>
+          <Route path="/deals">
+            <Header />
+            <Navlinks />
+            <TodayDeals />
             <Footer />
           </Route>
         </Switch>

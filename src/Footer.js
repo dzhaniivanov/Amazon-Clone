@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 
 function Footer() {
@@ -10,7 +11,7 @@ function Footer() {
             </div>
             <div className="footerarea__links">
                 <div className="footerarea__linkarea">
-                    <span>About Amazon</span>
+                    <Link to="/about">About Amazon</Link>
                 </div>
                 <div className="footerarea__linkarea">
                     <span>Make money with Us</span>
