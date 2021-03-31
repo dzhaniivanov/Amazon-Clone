@@ -11,7 +11,7 @@ function Footer() {
             </div>
             <div className="footerarea__links">
                 <div className="footerarea__linkarea">
-                    <Link to="/about">About Amazon</Link>
+                    <Link to="/about"><span>About Amazon</span></Link>
                 </div>
                 <div className="footerarea__linkarea">
                     <span>Make money with Us</span>
