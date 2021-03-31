@@ -1,0 +1,23 @@
+.newsfeed {
+  background: #f7f7f7;
+  border-left: 0;
+  overflow: hidden;
+  margin-right: 0;
+  order: 1;
+  width: 294px;
+  box-sizing: border-box;
+}
+.title {
+    padding:17px 20px;
+    margin-bottom:0;
+    color:#707379;
+    text-transform: uppercase;
+}
+.newsfeedItems{
+    display:block;
+    border-bottom:1px solid #dbdee1;
+    height:20%;
+    width:100%;
+    margin-right:20px;
+    box-sizing:border-box;
+}
