@@ -19,4 +19,8 @@
   align-items: center;
   justify-content: space-evenly;
 }
+.footerarea__linkarea a {
+  text-decoration: none;
+  color:whitesmoke;
+}
 
