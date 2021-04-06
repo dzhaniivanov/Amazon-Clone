@@ -27,8 +27,22 @@ function About() {
             </div>
             <div className="centerInfo">
 
+
             </div>
             <div className="topStories">
+                <div className="title">Top Stories</div>
+                <div className="topStoriesItem">
+                    Cloud computing pioners's new focus in...
+                </div>
+                <div className="topStoriesItem">
+                    Cloud computing pioners's new focus in...
+                </div>
+                <div className="topStoriesItem">
+                    Cloud computing pioners's new focus in...
+                </div>
+                <div className="topStoriesItem">
+                    Cloud computing pioners's new focus in...
+                </div>
 
             </div>
         </div>

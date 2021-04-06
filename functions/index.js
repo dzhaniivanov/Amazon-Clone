@@ -15,7 +15,7 @@ app.get('/', (req, res) => res.status(200).send('hello'))
 app.post('/payments/create', async (req, res) => {
     const total = req.query.total;
     
-    console.log('Payment Request Recieved', total);
+    console.log('Payment Request Recieved', total); 
 
     const paymentIntent = await stripe.paymentIntents.create({
         amount: total, //subunits of the currency
