@@ -1,13 +1,13 @@
 import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
-
+import BackToTop from './BackToTop';
 
 function Footer() {
     return (
         <div className="footerarea">
             <div className="footerarea_top">
-                <p>Back to Top</p>
+                <BackToTop showBelow={250} />
             </div>
             <div className="footerarea__links">
                 <div className="footerarea__linkarea">
