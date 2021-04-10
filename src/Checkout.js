@@ -25,6 +25,7 @@ function Checkout() {
                             {
                                 basket.map(item => (
                                     <ProductCart
+                                        key={item.id}
                                         id={item.id}
                                         title={item.title}
                                         image={item.image}

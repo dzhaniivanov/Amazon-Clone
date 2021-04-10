@@ -28,7 +28,7 @@ function Login() {
     }
     return (
         <div className="login">
-            <Link>
+            <Link to="/">
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
                     alt=""
@@ -41,10 +41,10 @@ function Login() {
                     <input value={userEmail} onChange={event => setUserEmail(event.target.value)} type="email" />
                     <h5>Password</h5>
                     <input value={userPassword} onChange={event => setUserPassword(event.target.value)} type="password" />
-                    <button onClick={loginUser} type="submit" className="login__signInButton">Sign In</button>
+                    <button data-testid="test" onClick={loginUser} type="submit" className="login__signInButton">Sign In</button>
                 </form>
                 <p>By signing-in,you agree to Amazon's Terms and Conditions</p>
-                <button onClick={signUpUser} className="login__registerButton">Create  your Amazon Account</button>
+                <button  onClick={signUpUser} className="login__registerButton">Create  your Amazon Account</button>
             </div>
         </div>
     )

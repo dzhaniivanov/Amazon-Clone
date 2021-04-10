@@ -1,12 +1,12 @@
-import React from 'react';
-import SearchIcon from '@material-ui/icons/Search';
+import React, { useState } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
+import Search from './Search'
 function Header() {
-    const [{ basket,loggedinuser }, dispatch] = useStateValue();
+    const [{ basket, loggedinuser }, dispatch] = useStateValue();
 
     const logoutUser = () => {
         if (loggedinuser) {
@@ -20,10 +20,7 @@ function Header() {
             <Link to="/">
                 <img className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png" alt="logo" />
             </Link>
-            <div className="header__search">
-                <input type="text" className="header__searchInput" />
-                <SearchIcon className="header__searchIcon" />
-            </div>
+          {/*   <Search /> */}
             <div className="header__nav">
                 {/* 1st link */}
                 <Link to={!loggedinuser && "/login"} className="header__link">

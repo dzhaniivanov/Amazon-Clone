@@ -54,9 +54,9 @@ function Payment() {
                 .collection('orders')
                 .doc(paymentIntent.id)
                 .set({
-                    basket:basket,
-                    amount:paymentIntent.amount,
-                    created:paymentIntent.created
+                    basket: basket,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created
                 })
 
 
@@ -102,6 +102,7 @@ function Payment() {
                         {
                             basket.map(item => (
                                 <ProductCart
+                                    key={item.id}
                                     id={item.id}
                                     title={item.title}
                                     image={item.image}

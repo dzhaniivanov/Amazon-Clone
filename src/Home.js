@@ -23,7 +23,6 @@ function Home() {
     }
 
     useEffect(() => {
-        console.log('call products');
         getProducts();
     }, [])
 
